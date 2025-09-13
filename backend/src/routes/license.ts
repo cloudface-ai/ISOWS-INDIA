@@ -20,7 +20,10 @@ router.post('/generate', authMiddleware, async (req, res) => {
       return res.status(400).json({ error: 'Work ID is required' });
     }
 
-    const license = await licenseService.generateLicense(workId, userId!, {
+    // Get user email from Firebase Auth
+    const userEmail = req.user?.email || 'user@example.com';
+    
+    const license = await licenseService.generateLicense(workId, userId!, userEmail, {
       authorName,
       dob,
       address,

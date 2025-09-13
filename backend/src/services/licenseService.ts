@@ -3,6 +3,7 @@ import { License } from '../types';
 import fs from 'fs';
 import path from 'path';
 import { workService } from './workService';
+import { emailService } from './emailService';
 
 // JSON persistence (dev)
 const DATA_DIR = path.join(__dirname, '..', '..', 'data');
@@ -37,6 +38,7 @@ export const licenseService = {
   async generateLicense(
     workId: string,
     userId: string,
+    userEmail: string,
     details?: Partial<Pick<License, 'authorName' | 'dob' | 'address' | 'mobile' | 'workType'>>
   ): Promise<License> {
     // Check if work exists and belongs to user
@@ -69,6 +71,18 @@ export const licenseService = {
       isLicensed: true, 
       licenseId: license.id 
     });
+    
+    // Send email notification
+    try {
+      await emailService.sendLicenseGeneratedNotification(
+        userEmail,
+        work.title,
+        license
+      );
+    } catch (error) {
+      console.error('Failed to send license notification email:', error);
+      // Don't fail license generation if email fails
+    }
     
     return license;
   },

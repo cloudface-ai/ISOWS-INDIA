@@ -1,0 +1,1 @@
+{"version":3,"file":"plagiarismService.d.ts","sourceRoot":"","sources":["../../src/services/plagiarismService.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAQ,MAAM,UAAU,CAAC;AAIlD,eAAO,MAAM,iBAAiB;6BACG,MAAM,kBAAkB,MAAM,GAAG,OAAO,CAAC,gBAAgB,CAAC;6CA2D9E,MAAM,UACP,MAAM,UACN,MAAM,aACH,MAAM,aACN,MAAM,GAChB,OAAO,CAAC,gBAAgB,CAAC;CA0B7B,CAAC"}

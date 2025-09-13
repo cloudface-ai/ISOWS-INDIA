@@ -93,5 +93,20 @@ export const workService = {
 
   async getRevisions(workId: string, userId: string): Promise<WorkRevision[]> {
     return revisions.filter(r => r.workId === workId && r.userId === userId).sort((a,b) => a.updatedAt.getTime() - b.updatedAt.getTime());
+  },
+
+  async getAllWorks(): Promise<Work[]> {
+    return works.slice();
+  },
+
+  async deleteWork(workId: string, userId: string): Promise<boolean> {
+    const workIndex = works.findIndex(w => w.id === workId && w.userId === userId);
+    if (workIndex === -1) {
+      return false;
+    }
+    
+    works.splice(workIndex, 1);
+    saveWorks(works);
+    return true;
   }
 };

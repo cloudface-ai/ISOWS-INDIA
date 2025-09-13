@@ -36,6 +36,12 @@ export interface PlagiarismResult {
   score: number;
   details: string;
   similarWorks?: string[];
+  matches?: Array<{
+    workId: string;
+    workTitle?: string;
+    similarity: number; // 0..1
+    overlappingPhrases: string[];
+  }>;
 }
 
 export interface WorkRevision {

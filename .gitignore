@@ -3,3 +3,5 @@
 backend/public/licenses/
 backend/data/
 frontend/public/license_*.pdf
+backend/firebase-service-account.json
+.env
